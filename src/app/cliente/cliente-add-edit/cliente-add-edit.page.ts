@@ -29,7 +29,9 @@ export class ClienteAddEditPage implements OnInit {
   public nome: string | undefined;
 
   submit(){
-    console.log(this.cliente);
+    if(this.clienteForm.invalid || this.clienteForm.pending){
+      return;
+    }
 
    // console.log(this.nome.nativeElement.value);
   }
