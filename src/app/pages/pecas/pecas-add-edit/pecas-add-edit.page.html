@@ -20,6 +20,7 @@
       </ion-row>
     </ion-grid>
   </ion-item-divider>
+  <ng-container *ngIf="pecasForm">
   <form [formGroup]="pecasForm" (submit)="submit()">
     <ion-item lines="none" [disabled]="!modoDeEdicao">
       <ion-label position="floating" class="label-input-title">Nome</ion-label>
@@ -49,4 +50,5 @@
       </ion-grid>
     </div>
   </form>
+  </ng-container>
 </ion-content>
