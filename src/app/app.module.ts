@@ -7,11 +7,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormBuilder } from '@angular/forms';
+import { DatabaseService } from './services/database.services';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
-  providers: [FormBuilder,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [FormBuilder,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, DatabaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
