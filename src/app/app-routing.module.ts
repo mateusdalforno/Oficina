@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'pecas-listagem',
+    redirectTo: 'ordensdeservico-listagem',
     pathMatch: 'full'
   },
   {
@@ -33,11 +33,15 @@ const routes: Routes = [
   },
   {
     path: 'ordensdeservico-listagem',
-    loadChildren: () => import('./pages/ordensdeservico/ordensdeservico-listagem/ordensdeservico-listagem.module').then( m => m.OrdensdeservicoListagemPageModule)
+    loadChildren: () => import('./pages/ordensdeservico/ordensdeservico-listagem/ordensdeservico-listagem.module').then( m => m.OrdensDeServicoListagemPageModule)
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'ordensdeservico-add-edit/:id',
+    loadChildren: () => import('./pages/ordensdeservico/ordensdeservico-add-edit/ordensdeservico-add-edit.module').then( m => m.OrdensDeServicoAddEditPageModule)
   },
 
 ];

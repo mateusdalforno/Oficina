@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OrdensDeServicoListagemPage } from './ordensdeservico-listagem.page';
+import { OrdensdeservicoAddEditPage } from './ordensdeservico-add-edit.page';
 
-describe('OrdensdeservicoListagemPage', () => {
-  let component: OrdensDeServicoListagemPage;
-  let fixture: ComponentFixture<OrdensDeServicoListagemPage>;
+describe('OrdensdeservicoAddEditPage', () => {
+  let component: OrdensdeservicoAddEditPage;
+  let fixture: ComponentFixture<OrdensdeservicoAddEditPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrdensDeServicoListagemPage ],
+      declarations: [ OrdensdeservicoAddEditPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OrdensDeServicoListagemPage);
+    fixture = TestBed.createComponent(OrdensdeservicoAddEditPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

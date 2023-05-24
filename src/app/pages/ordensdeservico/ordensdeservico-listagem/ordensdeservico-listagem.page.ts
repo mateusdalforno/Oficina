@@ -9,7 +9,7 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: './ordensdeservico-listagem.page.html',
   styleUrls: ['./ordensdeservico-listagem.page.scss'],
 })
-export class OrdensdeservicoListagemPage implements OnInit {
+export class OrdensDeServicoListagemPage implements OnInit {
 
   public ordensDeServico: OrdemDeServico[] = [];
 

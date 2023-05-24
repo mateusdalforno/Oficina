@@ -63,7 +63,7 @@ export class DatabaseService {
         return Promise.resolve();
     }
 
-    private async populateOrdensDeServico (db: SQLiteConnection, clienteID: string): Promise<void> {
+    private async populateOrdensDeServico (db: SQLiteDBConnection, clienteID: string): Promise<void> {
         let returnQuery = await db.query("select COUNT(ordemdeservicoid) as qtdeOS from ordensdeservico;");
         if(returnQuery.values![0].qtdeOS === 0) {
             let sqlcmd: string = "INSERT INTO ordensdeservico (ordemdeservicoid, clienteid, veiculo, dataehoraentrada, dataehoratermino) VALUES (?,?,?,?,?)";
@@ -76,7 +76,7 @@ export class DatabaseService {
         return Promise.resolve();
     }
 
-    private async populateClientes (db: SQLiteConnection, clienteID: string): Promise<void> {
+    private async populateClientes (db: SQLiteDBConnection, clienteID: string): Promise<void> {
         let returnQuery = await db.query("select COUNT(clienteid) as qtdeClientes from clientes;");
         if(returnQuery.values![0].qtdeClientes === 0) {
             let sqlcmd: string = "INSERT INTO clientes (clienteid, nome, email, telefone, renda) VALUES (?,?,?,?,?)";

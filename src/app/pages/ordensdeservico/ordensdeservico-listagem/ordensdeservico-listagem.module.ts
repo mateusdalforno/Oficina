@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { OrdensdeservicoListagemPageRoutingModule } from './ordensdeservico-listagem-routing.module';
+import { OrdensDeServicoListagemPageRoutingModule } from './ordensdeservico-listagem-routing.module';
 
-import { OrdensdeservicoListagemPage } from './ordensdeservico-listagem.page';
+import { OrdensDeServicoListagemPage } from './ordensdeservico-listagem.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrdensdeservicoListagemPageRoutingModule
+    OrdensDeServicoListagemPageRoutingModule
   ],
-  declarations: [OrdensdeservicoListagemPage]
+  declarations: [OrdensDeServicoListagemPage]
 })
-export class OrdensdeservicoListagemPageModule {}
+export class OrdensDeServicoListagemPageModule {}

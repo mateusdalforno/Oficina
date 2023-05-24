@@ -10,6 +10,8 @@ import { databaseName } from './services/database.statements';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  //private initPlugin:boolean |undefined;
+  selectedIndex: number | undefined;
 
   pages = [
     {
