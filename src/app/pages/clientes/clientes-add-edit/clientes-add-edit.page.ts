@@ -34,16 +34,22 @@ export class ClientesAddEditPage implements OnInit {
   }
   
   async ionViewWillEnter() {
-    this.modoDeEdicao = true;
-    this.cliente = {clienteid: '', nome: '', email: '', telefone: '', renda: 0.00, nascimento: new Date()};
+    const id = this.route.snapshot.paramMap.get('id') ?? '';
+    
+    if (id !== '-1') {
+      this.cliente = await this.clientesService.getById(id);
+    } else {
+      this.cliente = { clienteid: '', nome: '', email: '', telefone: '', renda: 0.00, nascimento: new Date() };
+      this.modoDeEdicao = true;
+    }
     this.clienteForm = this.formBuilder.group({
       clienteid: [this.cliente.clienteid],
       nome: [this.cliente.nome, Validators.required],
       email: [this.cliente.email, Validators.required],
       telefone: [this.cliente.telefone, Validators.required],
       renda: [this.cliente.renda, Validators.required],
-      nascimentoForm: [{ value: this.cliente.nascimento.toLocaleDateString(), disabled: !this.modoDeEdicao}, Validators.required],
-      nascimento: ['', Validators.required]
+      nascimento: [this.cliente.nascimento, Validators.required],
+      nascimentoForm: [{ value: this.cliente.nascimento.toLocaleDateString(), disabled: !this.modoDeEdicao }, Validators.required],
     });
   }
   selecionarData() {
@@ -78,21 +84,26 @@ export class ClientesAddEditPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     if (this.cliente.clienteid === '') {
-      await this.clientesService.create(this.clienteForm.value)
-      .then(
-        () => {
-          loading.dismiss().then(() => {
-            this.toastService.presentToast('Gravação bem sucedida', 3000, 'top');
-            this.router.navigateByUrl('/clientes-listagem');
-          });
-        },
-        error => {
-          console.error(error);
-        }
-      );
+      await this.clientesService.create(this.clienteForm.value);
+    } else {
+      //await this.clientesService.update(this.clienteForm.value);
     }
+    loading.dismiss().then(() => {
+      this.toastService.presentToast('Gravação bem sucedida',
+      3000, 'top');
+      this.router.navigateByUrl('/clientes-listagem');
+      });
   }
 
+  iniciarEdicao() {
+    this.modoDeEdicao = true;
+  }
+  
+  cancelarEdicao() {
+    this.clienteForm.setValue(this.cliente);
+    this.modoDeEdicao = false;
+  }
 
+  
 
 }

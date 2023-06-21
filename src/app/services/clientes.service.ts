@@ -29,6 +29,36 @@ export class ClientesService{
         }
     }
 
+    async getAll(): Promise<Cliente[]> {
+        const clientes: Cliente[] = [];
+        const q = query(collection(this._fireStore, "clientes"), orderBy("nome")).withConverter(clienteConverter);
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) =>{
+            clientes.push(doc.data());
+        });
+        return clientes;
+    }
+
+    async getById(clienteId: string): Promise<Cliente>{
+        const q = doc(this._fireStore, "clientes",clienteId).withConverter(clienteConverter);
+        const querySnapshot = await getDoc(q);
+        const data = querySnapshot.data();
+        if(data) {
+            return data as Cliente;
+        }else{
+            throw new Error("Cliente não encontrado");
+        }
+    }
+
+    async update(cliente: Cliente){
+        await setDoc(doc(this._fireStore, "clientes", cliente.clienteid).withConverter(clienteConverter),cliente);
+    }
+
+    async removeById(clienteId: string){
+        await deleteDoc(doc(this._fireStore, "clientes", clienteId)); 
+    }
+
+
 }
 
 /*import { DatabaseService } from "./database.services";
